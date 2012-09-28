@@ -19,7 +19,13 @@ namespace Trump
         private void _Shuffle()
         {
             // TODO: デッキをシャッフルする。
-            throw new NotImplementedException();
+            List<Card> newCards = new List<Card>();
+            Random rnd = new Random();
+            for (int i = 0, cnt = this._cards.Count; i < cnt; i++)
+            {
+                newCards.Add(this._cards[rnd.Next(0, cnt-1)]);
+            }
+            this._cards = newCards;
         }
 
         /// <summary>
