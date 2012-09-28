@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -34,11 +35,51 @@ namespace Trump
             }
         }
 
+        /// <summary>
+        /// 52枚のカードからなるデッキを作ります。
+        /// </summary>
         public CardDeck()
         {
             this._cards = new List<Card>();
             _Make52Deck();
             Shuffle();
+        }
+
+        /// <summary>
+        /// 指定された種類のデッキを作ります。
+        /// </summary>
+        /// <param name="initType"></param>
+        public CardDeck(DeckInitType initType)
+        {
+            this._cards = new List<Card>();
+            switch (initType)
+            {
+                case DeckInitType.Standerd:
+                    _Make52Deck();
+                    Shuffle();
+                    break;
+                case DeckInitType.OneJoker:
+                    _Make53Deck();
+                    Shuffle();
+                    break;
+                case DeckInitType.TwoJokers:
+                    _Make54Deck();
+                    Shuffle();
+                    break;
+                case DeckInitType.StanderdAndNonShuffle:
+                    _Make52Deck();
+                    break;
+            }
+            
+        }
+
+        /// <summary>
+        /// 指定された並びのカードからなるデッキを作ります。
+        /// </summary>
+        /// <param name="cards"></param>
+        public CardDeck(IEnumerable<Card> cards)
+        {
+            this._cards = new List<Card>(cards);
         }
 
         /// <summary>
