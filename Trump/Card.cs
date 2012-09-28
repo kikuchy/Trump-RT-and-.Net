@@ -11,6 +11,17 @@ namespace Trump
     public class Card
     {
         /// <summary>
+        /// ジョーカーを取得します。
+        /// </summary>
+        public static Card Joker
+        {
+            get
+            {
+                return new Card() { Suit = Suit.Joker, Rank = Rank.Joker };
+            }
+        }
+
+        /// <summary>
         /// このカードのスート(マーク)を表します。
         /// </summary>
         public Suit Suit;

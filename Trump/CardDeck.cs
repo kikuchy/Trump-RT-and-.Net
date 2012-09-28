@@ -181,7 +181,7 @@ namespace Trump
         private void _Make53Deck()
         {
             this._Make52Deck();
-            this._cards.Add(new Card() { Suit = Suit.Joker, Rank = Rank.Joker });
+            this._cards.Add(Card.Joker);
         }
 
         /// <summary>
@@ -190,7 +190,7 @@ namespace Trump
         private void _Make54Deck()
         {
             this._Make53Deck();
-            this._cards.Add(new Card() { Suit = Suit.Joker, Rank = Rank.Joker });
+            this._cards.Add(Card.Joker);
         }
     }
 }
