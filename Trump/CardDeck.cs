@@ -7,18 +7,23 @@ namespace Trump
 {
     public class CardDeck
     {
+        /// <summary>
+        /// カードの並びを保持するリスト。リストの0がデッキの上の方で、末尾が下の方。
+        /// </summary>
         private List<Card> _cards;
 
         public CardDeck()
         {
             this._cards = new List<Card>();
             _Make52Deck();
-            _Shuffle();
+            Shuffle();
         }
 
-        private void _Shuffle()
+        /// <summary>
+        /// デッキに残っているカードをシャッフルします。
+        /// </summary>
+        public void Shuffle()
         {
-            // TODO: デッキをシャッフルする。
             List<Card> newCards = new List<Card>();
             Random rnd = new Random();
             for (int i = 0, cnt = this._cards.Count; i < cnt; i++)
@@ -26,6 +31,22 @@ namespace Trump
                 newCards.Add(this._cards[rnd.Next(0, cnt-1)]);
             }
             this._cards = newCards;
+        }
+
+        /// <summary>
+        /// デッキの一番上のカードを取ります。
+        /// </summary>
+        /// <returns>デッキの一番上にあったカード。デッキの枚数が0ならnullを返す。</returns>
+        public Card TakeTopCard()
+        {
+            Card ret = null;
+            if (this._cards.Count <= 0)
+            {
+                return ret;
+            }
+            ret = this._cards[0];
+            this._cards.RemoveAt(0);
+            return ret;
         }
 
         /// <summary>
