@@ -12,6 +12,28 @@ namespace Trump
         /// </summary>
         private List<Card> _cards;
 
+        /// <summary>
+        /// デッキに残っているカードの枚数を取得します。
+        /// </summary>
+        public int Count
+        {
+            get
+            {
+                return this._cards.Count;
+            }
+        }
+
+        /// <summary>
+        /// デッキの残りカード枚数が0であるか、そうでないかを取得します。
+        /// </summary>
+        public bool IsEmpty
+        {
+            get
+            {
+                return this._cards.Count <= 0;
+            }
+        }
+
         public CardDeck()
         {
             this._cards = new List<Card>();
