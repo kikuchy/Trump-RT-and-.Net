@@ -84,6 +84,7 @@ namespace Trump
             return (int)this.Suit ^ (int)this.Rank;
         }
 
+
         public static bool operator ==(Card a, Card b)
         {
             if (System.Object.ReferenceEquals(a, b))
@@ -91,6 +92,11 @@ namespace Trump
             if (((object)a == null) || ((object)b == null))
                 return false;
             return a.Rank == b.Rank && a.Suit == b.Suit;
+        }
+
+        public static bool operator !=(Card a, Card b)
+        {
+            return !(a == b);
         }
     }
 }
