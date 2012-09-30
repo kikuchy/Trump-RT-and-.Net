@@ -11,28 +11,28 @@ namespace Trump
     public enum Suit
     {
         /// <summary>
+        /// トランプのジョーカーを表します
+        /// </summary>
+        Joker = 0,
+
+        /// <summary>
         /// トランプのハートを表します
         /// </summary>
-        Heart,
+        Heart = 1,
 
         /// <summary>
         /// トランプのスペードを表します
         /// </summary>
-        Spade,
+        Spade = 2,
 
         /// <summary>
         /// トランプのダイヤを表します
         /// </summary>
-        Diamond,
+        Diamond = 3,
 
         /// <summary>
         /// トランプのクラブを表します
         /// </summary>
-        Club,
-
-        /// <summary>
-        /// トランプのジョーカーを表します
-        /// </summary>
-        Joker
+        Club = 4
     }
 }

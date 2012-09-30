@@ -13,71 +13,71 @@ namespace Trump
         /// <summary>
         /// ジョーカーのトランプを表します
         /// </summary>
-        Joker,
+        Joker = 0,
 
         /// <summary>
         /// エースのトランプを表します
         /// </summary>
-        Ace,
+        Ace = 1,
 
         /// <summary>
         /// 2のトランプを表します
         /// </summary>
-        Two,
+        Two = 2,
 
         /// <summary>
         /// 3のトランプを表します
         /// </summary>
-        Three,
+        Three = 3,
 
         /// <summary>
         /// 4のトランプを表します
         /// </summary>
-        Four,
+        Four = 4,
 
         /// <summary>
         /// 5のトランプを表します
         /// </summary>
-        Five,
+        Five = 5,
 
         /// <summary>
         /// 6のトランプを表します
         /// </summary>
-        Six,
+        Six = 6,
 
         /// <summary>
         /// 7のトランプを表します
         /// </summary>
-        Seven,
+        Seven = 7,
 
         /// <summary>
         /// 8のトランプを表します
         /// </summary>
-        Eight,
+        Eight = 8,
 
         /// <summary>
         /// 9のトランプを表します
         /// </summary>
-        Nine,
+        Nine = 9,
 
         /// <summary>
         /// 10のトランプを表します
         /// </summary>
-        Ten,
+        Ten = 10,
 
         /// <summary>
         /// 11(ジャック)のトランプを表します
         /// </summary>
-        Jack,
+        Jack = 11,
 
         /// <summary>
         /// 12(クイーン)のトランプを表します
         /// </summary>
-        Queen,
+        Queen = 12,
 
         /// <summary>
         /// 13(キング)のトランプを表します
         /// </summary>
-        King
+        King = 13
     }
 }
