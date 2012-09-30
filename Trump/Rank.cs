@@ -11,12 +11,7 @@ namespace Trump
     public enum Rank
     {
         /// <summary>
-        /// ジョーカーのトランプを表します
-        /// </summary>
-        Joker = 0,
-
-        /// <summary>
-        /// エースのトランプを表します
+        /// 1(エース)のトランプを表します
         /// </summary>
         Ace = 1,
 

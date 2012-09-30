@@ -17,7 +17,7 @@ namespace Trump
         {
             get
             {
-                return new Card() { Suit = Suit.Joker, Rank = Rank.Joker };
+                return new Card() { Suit = Suit.Joker, Rank = Rank.Ace };
             }
         }
 
@@ -38,7 +38,7 @@ namespace Trump
         {
             get
             {
-                return (this.Suit == Suit.Joker) || (this.Rank == Rank.Joker);
+                return (this.Suit == Suit.Joker);
             }
         }
 
