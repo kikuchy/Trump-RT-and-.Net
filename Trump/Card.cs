@@ -55,7 +55,7 @@ namespace Trump
             }
             else
             {
-                ret = string.Format("{0}:{1}", this.Suit, this.Rank);
+                ret = this.Suit.ToString() + ":" +  this.Rank.ToString();
             }
             return ret;
         }
