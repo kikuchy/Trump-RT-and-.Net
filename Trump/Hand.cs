@@ -10,22 +10,21 @@ namespace Trump
         private int[] _cardTable = new int[53];
         private List<Card> _cardList = new List<Card>();
 
-        public void AddCard(Card card)
+        public void Add(Card card)
         {
             this._cardList.Add(card);
-            if (card.IsJoker)
-            {
-                this._cardTable[0]++;
-            }
-            else
-            {
-                this._cardTable[((int)card.Suit - 1) * (int)Rank.King + (int)card.Rank]++;
-            }
+            this._cardTable[Hand.GetTablePosition(card.Suit, card.Rank)]++;
         }
 
         public bool HasCardOf(Suit suit, Rank rank)
         {
-            return (this._cardTable[((int)suit - 1) * (int)Rank.King + (int)rank] > 0);
+            return (this._cardTable[Hand.GetTablePosition(suit, rank)] > 0);
+        }
+
+        private static int GetTablePosition(Suit suit, Rank rank)
+        {
+            int ret = ((int)suit - 1) * (int)Rank.King + (int)rank;
+            return (ret > -1) ? ret : 0;
         }
     }
 }
