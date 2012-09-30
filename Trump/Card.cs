@@ -59,5 +59,38 @@ namespace Trump
             }
             return ret;
         }
+
+        /// <summary>
+        /// 指定した System.Object が、現在の System.Object と等しいかどうかを判断します。
+        /// </summary>
+        /// <param name="obj">現在のオブジェクトと比較するオブジェクト。</param>
+        /// <returns></returns>
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+                return false;
+            Card card = obj as Card;
+            if ((Object)card == null)
+                return false;
+            return (this.Suit == card.Suit) && (this.Rank == card.Rank);
+        }
+
+        /// <summary>
+        /// 特定の型のハッシュ関数として機能します。
+        /// </summary>
+        /// <returns></returns>
+        public override int GetHashCode()
+        {
+            return (int)this.Suit ^ (int)this.Rank;
+        }
+
+        public static bool operator ==(Card a, Card b)
+        {
+            if (System.Object.ReferenceEquals(a, b))
+                return true;
+            if (((object)a == null) || ((object)b == null))
+                return false;
+            return a.Rank == b.Rank && a.Suit == b.Suit;
+        }
     }
 }
