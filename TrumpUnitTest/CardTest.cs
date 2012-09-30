@@ -27,5 +27,24 @@ namespace TrumpUnitTest
             Assert.IsFalse(a != b);
             Assert.IsTrue(a != c);
         }
+
+        [TestMethod]
+        public void IsJokerTest()
+        {
+            Card joker = Card.Joker;
+            Assert.IsTrue(joker.IsJoker);
+            Card a = new Card() { Suit = Suit.Heart, Rank = Rank.Queen };
+            Assert.IsFalse(a.IsJoker);
+        }
+
+        [TestMethod]
+        public void GetHashCodeTest()
+        {
+            Card a = new Card() { Suit = Suit.Heart, Rank = Rank.Two };
+            Card b = new Card() { Suit = Suit.Heart, Rank = Rank.Two };
+
+            // このメソッドで返るハッシュは、等価なインスタンスでは同じ必要があるが、等価でないインスタンスは違うハッシュを返す必要がない、とされている
+            Assert.AreEqual(a.GetHashCode(), b.GetHashCode());
+        }
     }
 }

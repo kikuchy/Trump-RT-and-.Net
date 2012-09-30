@@ -94,9 +94,8 @@ namespace Trump
             return a.Rank == b.Rank && a.Suit == b.Suit;
         }
 
-        public static bool operator !=(Card a, Card b)
-        {
+        public static bool operator !=(Card a, Card b){
             return !(a == b);
-        }
+            }
     }
 }
