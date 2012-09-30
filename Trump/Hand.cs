@@ -49,6 +49,7 @@ namespace Trump
         /// </summary>
         public Hand()
         {
+            this.InitTables();
         }
 
         /// <summary>
@@ -57,6 +58,7 @@ namespace Trump
         /// <param name="cards">指定するカード列。</param>
         public Hand(IEnumerable<Card> cards)
         {
+            this.InitTables();
             foreach (Card c in cards)
             {
                 this.Add(c);
@@ -70,7 +72,10 @@ namespace Trump
         public void Add(Card card)
         {
             this._cardList.Add(card);
-            this._cardNumTable[Hand.GetTablePosition(card.Suit, card.Rank)]++;
+            int idx = Hand.GetTablePosition(card.Suit, card.Rank);
+            this._cardNumTable[idx]++;
+            if (this._cardIdxTable[idx] != -1)
+                this._cardIdxTable[idx] = this._cardList.Count - 1;
         }
 
         /// <summary>
@@ -146,6 +151,18 @@ namespace Trump
         public IEnumerator GetEnumerator()
         {
             return this._cardList.GetEnumerator();
+        }
+
+        /// <summary>
+        /// 内部的に使用してる。テーブルを初期化します。
+        /// </summary>
+        private void InitTables()
+        {
+            for (int i = 0; i < 53; i++)
+            {
+                this._cardIdxTable[i] = -1;
+                this._cardNumTable[i] = 0;
+            }
         }
 
         /// <summary>
