@@ -15,7 +15,9 @@ Windows Store Application や、 .Net、Windows Phoneでの開発に使用できる、トランプ
 
 特に、手札モデルは「ハートの3があれば出す」といった、スート（マーク）とランク（数字）を指定したカードの取得を高速に行うことができます。（トランプを2組以上混ぜていないならば、O(1)操作）
 
-このライブラリを使えば、面倒なカードの実装を用意することなく、すぐにトランプゲームの開発を始めることができます。
+このライブラリを使えば、面倒なカードの実装を自分で行うことなく、すぐにトランプゲームの開発を始めることができます。
+
+new BSD Lisence なので、有料で配布するアプリケーションにも組み込むことができます。
 
 
 使用例
@@ -36,7 +38,7 @@ Windows Store Application や、 .Net、Windows Phoneでの開発に使用できる、トランプ
 		new Player()
 	};
 	
-	// 山札を用意する
+	// 山札を用意する。これだけでシャッフル済みの山札が用意できる。
 	CardDeck deck = new CardDeck(DeckInitType.Standerd);
 	
 	// プレイヤーに配る
@@ -52,7 +54,7 @@ Windows Store Application や、 .Net、Windows Phoneでの開発に使用できる、トランプ
 	Player p = players[0];
 	Card c;
 	// ハートの３があれば出したい
-	if((c = p.TakeCardOf(Suit.Heart, Rank.Three)) != null)
+	if((c = p.Cards.TakeCardOf(Suit.Heart, Rank.Three)) != null)
 	{
 		trash.Add(c);
 	}
