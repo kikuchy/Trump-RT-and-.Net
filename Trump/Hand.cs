@@ -35,8 +35,12 @@ namespace Trump
             set
             {
                 Card oldCard = this._cardList[i];
-                this._cardNumTable[Hand.GetTablePosition(oldCard.Suit, oldCard.Rank)]--;
+                this.RemoveAt(i);
                 this._cardList[i] = value;
+                int idx = Hand.GetTablePosition(oldCard.Suit, oldCard.Rank);
+                this._cardNumTable[idx]++;
+                if (this._cardIdxTable[idx] == -1)
+                    this._cardIdxTable[idx] = this._cardList.Count - 1;
             }
             get
             {
@@ -96,7 +100,7 @@ namespace Trump
             this._cardList.Add(card);
             int idx = Hand.GetTablePosition(card.Suit, card.Rank);
             this._cardNumTable[idx]++;
-            if (this._cardIdxTable[idx] != -1)
+            if (this._cardIdxTable[idx] == -1)
                 this._cardIdxTable[idx] = this._cardList.Count - 1;
         }
 
@@ -104,11 +108,18 @@ namespace Trump
         /// 指定したインデックスにある要素を削除します。
         /// </summary>
         /// <param name="i">削除する要素の、0 から始まるインデックス番号。</param>
+        /// /// <remarks>このメソッドは、同じ種類のカードが手札に1枚しかない場合、O(1)操作です。
+        /// 2枚以上ある場合はO(n)操作になります(nはCountの値)。</remarks>
         public void RemoveAt(int i)
         {
             Card oldCard = this._cardList[i];
-            this._cardNumTable[Hand.GetTablePosition(oldCard.Suit, oldCard.Rank)]--;
             this._cardList.RemoveAt(i);
+            int idx = Hand.GetTablePosition(oldCard.Suit, oldCard.Rank);
+            this._cardNumTable[idx]--;
+            if (this.HasCardOf(oldCard))
+            {
+                this._cardIdxTable[idx] = this._cardList.IndexOf(oldCard);
+            }
         }
 
         /// <summary>
@@ -139,17 +150,13 @@ namespace Trump
         /// <returns>指定されたカード。指定されたカードが存在しない場合、null。</returns>
         /// <remarks>このメソッドは、同じ種類のカードが手札に1枚しかない場合、O(1)操作です。
         /// 2枚以上ある場合はO(n)操作になります(nはCountの値)。</remarks>
-        public Card TackCardOf(Card card)
+        public Card TakeCardOf(Card card)
         {
             if (!this.HasCardOf(card))
                 return null;
             int idx = Hand.GetTablePosition(card.Suit, card.Rank);
             Card ret = this._cardList[this._cardIdxTable[idx]];
-            this.RemoveAt(idx);
-            if (this.HasCardOf(card))
-            {
-                this._cardIdxTable[idx] = this._cardList.IndexOf(card);
-            }
+            this.RemoveAt(this._cardIdxTable[idx]);
             return ret;
         }
 
@@ -161,9 +168,9 @@ namespace Trump
         /// <returns>指定されたカード。指定されたカードが存在しない場合、null。</returns>
         /// <remarks>このメソッドは、同じ種類のカードが手札に1枚しかない場合、O(1)操作です。
         /// 2枚以上ある場合はO(n)操作になります(nはCountの値)。</remarks>
-        public Card TackCardOf(Suit suit, Rank rank)
+        public Card TakeCardOf(Suit suit, Rank rank)
         {
-            return this.TackCardOf(new Card() { Suit = suit, Rank = rank });
+            return this.TakeCardOf(new Card() { Suit = suit, Rank = rank });
         }
 
         /// <summary>
