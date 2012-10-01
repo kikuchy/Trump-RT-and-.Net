@@ -45,6 +45,28 @@ namespace Trump
         }
 
         /// <summary>
+        /// 手札にあるカードの枚数を取得します。
+        /// </summary>
+        public int Count
+        {
+            get
+            {
+                return this._cardList.Count;
+            }
+        }
+
+        /// <summary>
+        /// 手札にカードが残っていないかどうかを取得します。
+        /// </summary>
+        public bool IsEmpty
+        {
+            get
+            {
+                return (this._cardList.Count <= 0);
+            }
+        }
+
+        /// <summary>
         /// 手札を初期化します。
         /// </summary>
         public Hand()
